@@ -43,4 +43,6 @@ makeData(savepath,[path,'ng'],[path,'n'],32);
 makeData(savepath,[path,'sh'],[path,'s'],45);
 makeData(savepath,[path,'th'],[path,'z'],1152,[path,'s'],1125,[path,'d'],114,[path,'l'],83);
 makeData(savepath,[path,'zh'],[path,'sh'],32,[path,'s'],32);
+% add sil
+makeTestdata(savepath,[path,'sil']);
 
