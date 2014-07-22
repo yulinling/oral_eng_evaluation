@@ -4,7 +4,8 @@ poslabel=1;
 neglabel=2;
 numPos=size(posExample,1); %number of pos example
 k=size(posExample,2); %number of features
-numNeg=numPos;
+partition=0.5; % the ratio between mix and unmix example
+numNeg=floor(numPos*partition);
 numParam=numel(varargin);
 numFiles=floor(numParam/2);
 negExamples=cell(1,numFiles);
@@ -42,7 +43,6 @@ for i=1:numFiles
     negExamples{i}=negExamples{i}(1:numNegtemp(i),:);
 end
 
-number=numPos+numNeg;
 X=[];
 Y=[];
 
@@ -54,6 +54,33 @@ for i=1:numFiles
     X=[X;negExamples{i}];
     Y=[Y;ones(n,1)*neglabel];
 end
+
+clear posExample negExamples;
+
+% 添加非混淆音素的数据
+index=strfind(pos,'/');
+basePath=pos(1:index);
+posName=pos(index+1:end);
+dirOutput=dir(basePath);
+Allfiles={dirOutput.name}';
+Allfiles=Allfiles(3:end);
+fileNames=[fileNames,posName];
+leftfileNames=setdiff(Allfiles,fileNames);
+numleft=floor(numPos*(1-partition));
+avgnum=floor(numleft/length(leftfileNames));
+for i=1:length(leftfileNames)
+    data=load([basePath,leftfileNames{i}]);
+    num=avgnum;
+    if num>size(data,1)
+        num=size(data,1);
+    end
+    X=[X;data(1:num,:)];
+    Y=[Y;ones(num,1)*neglabel];
+    clear data;
+end
+
+%计算总的样本数量
+number=size(X,1);
 
 % randomlize data
 r=randperm(size(X,1));

@@ -34,6 +34,7 @@ for i=1:length(fileNames)
     end
     X=[X;data(1:num,:)];
     Y=[Y;ones(num,1)*neglabel];
+    clear data;
 end
 
 % randomlize data
