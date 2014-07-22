@@ -1,4 +1,4 @@
-function NeuralNetworkTools(path)
+function NeuralNetworkTools(path,savepath)
 
 dirOutput=dir(strcat('./',path));
 fileNames={dirOutput.name}';
@@ -42,7 +42,7 @@ for i=3:3:n
         
         % save model
         if maxValue<(1-c)*100
-            save(['model/' fileNames{i}(1:index-1) '_net'],'net');
+            save([savepath fileNames{i}(1:index-1) '_net'],'net');
             maxValue=(1-c)*100;
         end
     end
