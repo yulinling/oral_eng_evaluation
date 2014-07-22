@@ -10,7 +10,9 @@ PredictFileName={dirOutput.name}';
 PredictFileName=PredictFileName(3:end);
 pn=length(PredictFileName);
 
+
 for i=1:mn
+    fprintf('%s %s %s',ModelFileName{i},PredictFileName{(i-1)*3+1},PredictFileName{(i-1)*3+3});
     load(strcat(ModelPath,ModelFileName{i})); % load model
     load(strcat(PredictdataPath,PredictFileName{(i-1)*3+1})); % load X
     load(strcat(PredictdataPath,PredictFileName{(i-1)*3+3})); % load Y
