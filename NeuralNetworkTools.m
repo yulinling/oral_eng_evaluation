@@ -3,15 +3,21 @@ function NeuralNetworkTools(path)
 dirOutput=dir(strcat('./',path));
 fileNames={dirOutput.name}';
 n=length(fileNames);
-
+maxNumber=100000;
 for i=3:3:n
     load(strcat(path,fileNames{i}));
     load(strcat(path,fileNames{i+2}));
+    num=size(X,1);
+    if num>maxNumber
+        num=maxNumber;
+    end
+    X=X(1:num,:);
+    NEWY=NEWY(1:num,:);
     X=X';
     NEWY=NEWY';
     
     maxValue=0;
-    for j=1:5
+    for j=1:3
         % Create a Pattern Recognition Network
         hiddenLayerSize = 27;
         net = patternnet(hiddenLayerSize);
