@@ -1,6 +1,6 @@
 function makeTestdataSet(path,savepath)
 
-dirOutput=dir(path);
+dirOutput=dir(strcat('./',path));
 fileNames={dirOutput.name}';
 fileNames=filterFileName(fileNames);
 
