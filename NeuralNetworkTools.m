@@ -2,9 +2,10 @@ function NeuralNetworkTools(path,savepath)
 
 dirOutput=dir(strcat('./',path));
 fileNames={dirOutput.name}';
+fileNames=filterFileName(fileNames);
 n=length(fileNames);
 maxNumber=100000;
-for i=3:3:n
+for i=1:3:n
     load(strcat(path,fileNames{i}));
     load(strcat(path,fileNames{i+2}));
     num=size(X,1);

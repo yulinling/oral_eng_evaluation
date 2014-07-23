@@ -10,7 +10,7 @@ index=strfind(posPath,'/');
 basePath=posPath(1:index);
 dirOutput=dir(basePath);
 fileNames={dirOutput.name}';
-fileNames=fileNames(3:end);
+fileNames=filterFileName(fileNames);
 posName=posPath(index+1:end);
 
 avgnum=floor(numNeg/(length(fileNames)-1));

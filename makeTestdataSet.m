@@ -2,7 +2,7 @@ function makeTestdataSet(path,savepath)
 
 dirOutput=dir(path);
 fileNames={dirOutput.name}';
-fileNames=fileNames(3:end);
+fileNames=filterFileName(fileNames);
 
 for i=1:length(fileNames)
     makeTestdata(savepath,[path,fileNames{i}]);

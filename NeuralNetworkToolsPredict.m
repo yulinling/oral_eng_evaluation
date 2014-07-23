@@ -2,12 +2,12 @@ function NeuralPredict(ModelPath,PredictdataPath)
 
 dirOutput=dir(strcat('./',ModelPath));
 ModelFileName={dirOutput.name}';
-ModelFileName=ModelFileName(3:end);
+ModelFileName=filterFileName(ModelFileName);
 mn=length(ModelFileName);
 
 dirOutput=dir(strcat('./',PredictdataPath));
 PredictFileName={dirOutput.name}';
-PredictFileName=PredictFileName(3:end);
+PredictFileName=filterFileName(PredictFileName);
 pn=length(PredictFileName);
 
 
