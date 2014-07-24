@@ -1,4 +1,4 @@
-function NeuralNetworkTrain(path)
+function NeuralNetworkTrain(path,savepath)
 
 dirOutput=dir(strcat('./',path));
 fileNames={dirOutput.name}';
@@ -14,7 +14,7 @@ for i=1:3:n
         hidden_layer_size = 27;
         num_labels = 2;
         
-        numTrain = round(numel(Y)/10*8);
+        numTrain = round(numel(Y)/10*7);
         trainData   = X(1:numTrain,:);
         trainLabels = Y(1:numTrain);
         testData   = X(numTrain+1:end,:);
@@ -32,7 +32,7 @@ for i=1:3:n
                                   % sparseAutoencoderCost.m satisfies this.
         options.maxIter = 100;	  % Maximum number of iterations of L-BFGS to run 
         options.display = 'off';
-        lambda=0.1;
+        lambda=1;
 
         costFunction = @(p) nnCostFunction(p, ...
                                        input_layer_size, ...
@@ -54,7 +54,7 @@ for i=1:3:n
         fprintf('%s\n',str);
 
         if maxVal<accuracy
-            save(['../mymodel/' fileNames{i}(1:index-1) '_net'],'W1','W2');
+            save([savepath fileNames{i}(1:index-1) '_net'],'W1','W2');
             maxVal=accuracy;
         end
         
