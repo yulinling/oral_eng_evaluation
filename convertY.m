@@ -1,13 +1,9 @@
-function NEWY=convertY(file)
+function NEWY=convertY(file,k)
 load(file);
 n=length(Y);
-NEWY=zeros(n,2);
+NEWY=zeros(n,k);
 for i=1:n
-    if Y(i)==1
-        NEWY(i,1)=1;
-    else
-        NEWY(i,2)=1;
-    end
+    NEWY(i,Y(i))=1;
 end
 index=strfind(file,'.');
 newfile=strcat(file(1:index-1),'N.mat');

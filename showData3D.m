@@ -1,7 +1,7 @@
-function showData3D(data,varargin)
+function showData3D(filename,varargin)
 % flag: if flag==true normalize else without normalize
 % 
-
+data=load(filename);
 X=data(:,1);
 Y=data(:,2);
 Z=data(:,3);

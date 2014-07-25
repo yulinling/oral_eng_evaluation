@@ -1,9 +1,9 @@
 inputSize=2;
-hiddenSize=421;
+hiddenSize=10;
 numLabels=5;
 isSimOnDataSet=false;
 
-data=load('data');
+data=load('newdata');
 col=[1,2];
 X=data(:,col);
 %X=normalize(X);

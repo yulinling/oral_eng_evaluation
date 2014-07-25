@@ -1,5 +1,5 @@
-function calInfoGain(data)
-
+function calInfoGain(path)
+data=load(path);
 totalEntropy=calEntropy(data);
 fprintf('total entropy: %f\n',totalEntropy);
 featureEntropy=zeros(1,size(data,2)-1);

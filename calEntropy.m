@@ -1,6 +1,6 @@
 function entropy=calEntropy(data)
 
-label=data(:,4);
+label=data(:,end:end);
 n=length(label);
 labelCnt=zeros(1,5);
 for i=1:n
